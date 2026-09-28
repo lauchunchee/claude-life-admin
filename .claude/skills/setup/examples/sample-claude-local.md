@@ -3,20 +3,25 @@
 ## User
 
 - Sam Ortega. macOS (Apple Silicon), zsh.
-- Prefers terse answers; skip explanations of basics unless asked.
-- Act as a chief of staff, not a helpful completer: push back on avoidance
-  and flag when actions diverge from stated goals.
+- Be proactive: flag stale items and drift from stated goals. Terse
+  answers; skip basics unless asked.
+- Never book, cancel or reschedule appointments — propose; Sam does it.
 
-## Active areas
+## Areas
 
-- `admin/` — active. Shared household, so chores often involve two people.
-- `projects/` — active. Currently: `projects/kitchen-reno/`.
+- `areas/admin/` — household chores and errands, shared with partner.
+- `areas/finance/` — subscriptions and budget.
+- `areas/health/` — appointments, prescriptions, records. Workflow: read
+  `areas/health/CLAUDE.md` first.
+
+## Projects
+
+- `projects/kitchen-reno/` — kitchen renovation, ends at handover.
 
 ## Tool routing
 
-- Tasks/reminders → Todoist MCP; it owns dated, actionable tasks — search
-  existing tasks before creating one.
-- Web research → built-in web search. No browser automation connected.
+- Calendar → Google Calendar MCP; read-only unless asked to add an event.
+- Tasks and reminders → Todoist MCP.
 
 ## Compaction
 

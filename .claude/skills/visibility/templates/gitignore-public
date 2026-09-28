@@ -22,7 +22,18 @@ CLAUDE.local.md
 private/
 .env
 .env.*
-**/*secret*
+**/*[Ss][Ee][Cc][Rr][Ee][Tt]*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+credentials.json
+*cookie*.json
+*.har
+.mcp.json
+.envrc
 
 # ── OS cruft, anywhere ───────────────────────────────────────────────
 Thumbs.db

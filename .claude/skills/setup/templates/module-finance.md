@@ -1,25 +1,25 @@
 ---
-paths: ["finance/**"]
+paths:
+  - "areas/{{area}}/**"
 ---
 
 <!--
-Module template. When generating: fill {{currency_and_locale}} and adapt
-the folder name in paths: if needed. Delete these comments in the
-generated file.
+Module template → .claude/rules/finance.md. Fill {{area}} (default
+"finance") and {{currency_and_locale}}.
 -->
 
 # Finance conventions
 
-- Privacy tiering is the whole game: statements, tax documents, and
-  anything bearing account or card numbers go to `private/` (Claude never
-  reads it). Tracked files carry categories, dates, merchant names, and
-  amounts only — NEVER account numbers, card numbers, or credentials, in
-  any visibility mode.
-- `finance/subscriptions.md` — one table: service, cost, billing cycle,
-  renewal date, cancel-by date, last reviewed. Swept during /weekly-review.
-- Recurring obligations (bills, renewals) belong in the external task
-  system if one is connected; the repo keeps the inventory and the history.
-- Answer money questions from tracked aggregates. If the answer would
-  require a document in `private/`, ask the user to extract the numbers
-  themselves.
-- {{currency_and_locale}}
+- Statements, tax documents and anything else carrying account or card
+  numbers go to `private/`. Tracked files hold categories, dates,
+  merchants and amounts only.
+- `areas/{{area}}/subscriptions.md` — one table: service, cost, billing
+  cycle, renewal date, cancel-by date, last reviewed.
+- Answer money questions from tracked aggregates. If an answer needs a
+  document in `private/`, ask the user for the numbers.
+- {{currency_and_locale — e.g. "Amounts in EUR, dates YYYY-MM-DD"}}
+
+## Weekly checks
+
+- `areas/{{area}}/subscriptions.md`: renewals and cancel-by dates in the
+  next 14 days.

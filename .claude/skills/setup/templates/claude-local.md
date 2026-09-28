@@ -1,29 +1,35 @@
 <!--
-Skeleton for the generated CLAUDE.local.md. Flexible template: keep the
-section shape, fill only what the interview produced, cut any section with
-nothing behavioral in it. Every line must pass: "would removing this cause
-Claude to make mistakes?" HTML comments are stripped when Claude loads the
-file, so notes like this cost nothing.
+Skeleton for the generated CLAUDE.local.md, which loads every session.
+Keep the section order; drop any bullet or section the interview left
+empty. Keep a line only if removing it would cause a mistake.
+It holds pointers, not state: one line per area or project. Status, dates
+and verdicts live in that folder's own files — here they go stale first.
+Rules CLAUDE.md already states are never restated here.
 -->
 
 # Personal layer
 
 ## User
 
-- {{name}}{{contact_if_offered}}. {{os_and_machine}}.
-- {{shell_notes — only quirks that change behavior}}
-- {{working_style — e.g. push-back stance, terseness, commit cadence}}
+- {{user_name}}. {{os_and_shell}}.
+- {{shell_quirks — only quirks that change commands, e.g. "PowerShell 5.1: no `&&`"}}
+- {{working_style — proactivity and push-back stance, terseness}}
+- {{never_do — the user's own hard limits}}
 
-## Active areas
+## Areas
 
-- {{one line per active area folder; link its rules module if one was generated}}
+- `areas/{{area}}/` — {{purpose — at most 8 words}}
+- `areas/{{area}}/` — {{purpose}}. Workflow: read `areas/{{area}}/CLAUDE.md` first.
+
+## Projects
+
+- `projects/{{project}}/` — {{purpose — at most 8 words}}
 
 ## Tool routing
 
-- {{one line per connected MCP server: what it owns, when to use it — omit
-  the whole section if none are connected}}
+- {{tool_routing — one line per connected MCP server or CLI tool: what it owns, when to use it}}
+- {{task_system — "Tasks and reminders → <tool>", or "No task manager connected: repo markdown owns all tasks and reminders."}}
 
 ## Compaction
 
-- {{only additions beyond the framework defaults, e.g. "preserve external
-  task IDs" — omit the section if none}}
+- {{compaction — only what to preserve beyond CLAUDE.md's list, e.g. external task IDs}}

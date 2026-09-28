@@ -1,37 +1,40 @@
 ---
-paths: ["job-search/**"]
+paths:
+  - "areas/{{area}}/**"
 ---
 
 <!--
-Module template. When generating: adapt the folder name in paths: and the
-paths below if the user named their area differently, and set the fit
-threshold with the user. Delete these comments in the generated file.
+Module template → .claude/rules/job-search.md. Fill {{area}} (default
+"job-search"). The fit threshold lives in profile/preferences.md, not here.
 -->
 
 # Job-search conventions
 
-- NEVER invent experience, skills, or metrics in job documents — every claim
-  traces to `job-search/profile/master-resume.md` or `brag-document.md`.
-- NEVER automate logged-in LinkedIn (scraping, connecting, Easy Apply) — ban
-  risk. Job discovery: public ATS career pages (Greenhouse/Lever/Ashby)
-  first, web search second, LinkedIn last — read-only and manual, always.
-- Master → variant, one-way: tailored resumes are generated FROM
-  `profile/master-resume.md`. Never edit master during tailoring; new facts
-  get folded back into master deliberately, in their own step.
+- Never invent experience, skills or metrics in job documents — every
+  claim traces to `areas/{{area}}/profile/master-resume.md`.
+- NEVER automate logged-in LinkedIn (scraping, connecting, Easy Apply) —
+  ban risk. Job discovery: public ATS career pages (e.g. Greenhouse,
+  Lever, Ashby) first, web search second, LinkedIn last and by hand.
+- Tailored resumes are generated from `profile/master-resume.md`, one-way.
+  Leave master untouched while tailoring; fold new facts into it as a
+  separate, deliberate step.
 - Fit gate before tailoring: score the posting 1–5 against
-  `profile/preferences.md` and record the score in the application folder.
-  Below the threshold set in preferences.md, stop after scoring.
-- Application folders: `applications/YYYY-MM-DD-company-role/` containing
-  `jd.md` (verbatim snapshot with URL and retrieval date — postings vanish),
-  `resume.md`, and `notes.md` with frontmatter:
-  `company, role, url, status, applied, last_touch, next_action`.
-- Status pipeline: researching → tailoring → applied → screen → interview-N →
-  offer | rejected | ghosted.
-- Resume format: single column, no tables, text boxes, or images, standard
-  section headers — the dominant ATS failure is a broken text layer.
-- Cover letters ≤250 words, problem–solution–impact, seeded with a real
-  anecdote supplied by the user. Banned: "leveraged", "spearheaded",
+  `profile/preferences.md` and record the score in the application's
+  `notes.md`. Below the threshold in preferences.md (ask once if unset),
+  stop after scoring.
+- Application folders: `applications/YYYY-MM-DD-company-role/` with
+  `jd.md` (verbatim snapshot, URL and retrieval date — postings vanish),
+  `resume.md`, and `notes.md` whose frontmatter is `company, role, url,
+  status, applied, updated, next_action`, plus `waiting_on` and `check`
+  while waiting.
+- `status` pipeline in `notes.md`, mapped to the core values:
+  researching, tailoring → `active`; applied, screen, interview-N →
+  `waiting`; offer, rejected, ghosted → `done`.
+- Resume format: single column, standard section headers, no tables, text
+  boxes or images — a broken text layer is the most common ATS failure.
+- Cover letters ≤250 words, problem–solution–impact, built on a real
+  anecdote the user supplies. Banned: "leveraged", "spearheaded",
   "I am excited to", motivational-poster tone.
 - Generated PDF/DOCX go to `artifacts/`.
-- Once ~5 applications exist, maintain `applications-index.md` as a table
-  GENERATED from notes.md frontmatter — regenerate it, never hand-edit it.
+- From about 5 applications on, keep `applications-index.md`: a table
+  regenerated from the `notes.md` frontmatter, never hand-edited.

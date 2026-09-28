@@ -1,28 +1,27 @@
 ---
-paths: ["system/**"]
+paths:
+  - "areas/{{area}}/**"
 ---
 
 <!--
-Module template. When generating: fill {{shell_specifics}} from the
-interview (OS + shell), and adapt the folder name in paths: if the user
-named their area differently. Delete these comments in the generated file.
+Module template → .claude/rules/system-maintenance.md. Fill {{area}}
+(default "system") and {{shell_specifics}} from the detected OS and shell.
 -->
 
 # System-maintenance conventions
 
-- Everything follows the framework's two-phase rule: audit (read-only) →
-  report → approval → execute. The report IS the approval interface.
-- Reports: `system/reports/YYYY-MM-DD-<topic>.md` — a findings table (item,
-  size/impact, risk, recommendation) plus an empty `## Approved actions`
-  section the user fills in. Execute ONLY items listed there.
-- Runbooks: `system/runbooks/<name>.md` — reusable read-only discovery
-  checklists (disk usage by folder, temp/cache sizes, startup apps, pending
-  updates, disk health). Runbooks are data; never embed cleanup commands in
-  them.
-- Every executed action gets a dated entry in `system/maintenance-log.md`
-  (what, why, result, space reclaimed) in the same session.
-- Without an explicit request, never touch: registry or system config
-  stores, drivers, disk encryption or restore settings, other users'
-  folders.
+- The findings report of CLAUDE.md's two-phase rule is the approval
+  interface: `areas/{{area}}/reports/YYYY-MM-DD-<topic>.md` with a
+  findings table (item, impact, risk, recommendation) and an empty
+  `## Approved actions` section the user fills in. Execute only the items
+  listed there.
+- Runbooks: `areas/{{area}}/runbooks/<name>.md` — reusable read-only
+  discovery checklists (pending updates, disk usage, disk health, failed
+  services, startup items). Keep changes out of runbooks so an audit can
+  run them safely.
+- Log every executed action in `areas/{{area}}/maintenance-log.md` in the
+  same session: date, what, why, result; appended in date order.
+- Touch only on explicit request: system configuration stores, drivers,
+  disk encryption, boot or restore settings, other users' folders.
 - {{shell_specifics — e.g. "Discovery uses read-only PowerShell Get-*
-  cmdlets" or the macOS/Linux equivalents}}
+  cmdlets", or the package-manager and service commands for macOS/Linux}}
